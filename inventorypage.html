@@ -3,7 +3,7 @@
 <head>
 	<!-- title, page information, author name and descreption -->
   
-	<title>Inventory Page, V5</title>
+	<title>Inventory Page</title>
 	<meta charset="UTF-8">
 	<meta name="author" content="Boushr Abdulmohsen"/>
 	<meta name="description" content="Boushra's Jewelry"/>
@@ -33,7 +33,7 @@
           success:retrieveData
         });
     });	
-		function retrieveData(table)
+	function retrieveData(table)
 		{
 			
 			data = table
@@ -110,42 +110,48 @@
 
 </script>
 <body>
+	
+	<!--Container-->
+	<div class="container">
+		<div class="text-center">
+			<h1 class=" text-dark bg-white">Inventory</h1>
+		</div>
+	</div>
+	
 
-  <!-- Product List using Database Table  -->
-  
-<table id="products" class="display w3-table-all">
-	
-</table>
+	<!-- Product List using Database Table  -->
+	<table id="products" class="display w3-table-all">
+		
+	</table>
 
-	<br>
-	<br>
+
 	
-<form class="content" method="GET" enctype="application/x-www-form-urlencoded" onsubmit="updateInventory()" action="inventorypage.html" >	
-	<fieldset id="Order">
-	
-		<legend><u>Inventory  Order</u></legend>
-		<!-- Product Id required -->
-		<label><b>Products:</b></label>
-		<select ID="productName" name="productlist" >
-			<!-- for now it is only content select item -->
-			<option value="" selected>none</option>
-		</select> 
+	<form class="content" method="GET" enctype="application/x-www-form-urlencoded" onsubmit="updateInventory()" action="inventorypage.html" >	
+		<fieldset id="Order">
+		
+			<legend><u>Inventory  Order</u></legend>
+			<!-- Product Id required -->
+			<label><b>Products:</b></label>
+			<select ID="productName" name="productlist" >
+				<!-- for now it is only content select item -->
+				<option value="" selected>none</option>
+			</select> 
+			<br>
+			<br>
+			
+			<!-- Quantity using range and text box  -->
+			<b>Quantity:</b> <input name="quantity" id="rangeoutput" type="number" value="1" step="1" min = "1"  />
+			<input id="rangeinput" type="range" min="1" step="5" max="1000" value = "1" oninput="rangeoutput.value=rangeinput.value" />
+			<br>
+			<br>
+		
+		<br>
+		<input class="button w3-button w3-hover-black" type="submit" value="Order Inventory ">
+		
 		<br>
 		<br>
 		
-		<!-- Quantity using range and text box  -->
-		<b>Quantity:</b> <input name="quantity" id="rangeoutput" type="number" value="1" step="1" min = "1"  />
-		<input id="rangeinput" type="range" min="1" step="5" max="1000" value = "1" oninput="rangeoutput.value=rangeinput.value" />
-		<br>
-		<br>
-	
-	<br>
-	<input class="button w3-button w3-hover-black" type="submit" value="Order Inventory ">
-	
-	<br>
-	<br>
-	
-</form> 
+	</form> 
 
 
 	
