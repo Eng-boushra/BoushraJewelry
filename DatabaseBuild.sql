@@ -44,7 +44,7 @@ INSERT INTO tbInventory (Product,Description,Image,Price,Quantity) VALUES
 ("Item2","Needle necklace","<img src='Item2.jpg' alt='Image Missing!' style='width:100px; height:100px'>",150,186),
 ("Item3","Medical symbol necklace","<img src='Item3.jpg' alt='Image Missing!' style='width:100px; height:100px'>",200,144),
 ("Item4","Brain pin","<img src='Item4.jpg' alt='Image Missing!' style='width:100px; height:100px'>",50,495),
-  ("Item5","Stethoscope Necklace","<img src='Item5.jpg' alt='Image Missing!' style='width:100px; height:100px'>",250,201);
+("Item5","Stethoscope Necklace","<img src='Item5.jpg' alt='Image Missing!' style='width:100px; height:100px'>",250,201);
 SELECT * FROM tbInventory;
 
 -- -------------------------------------------------------------------

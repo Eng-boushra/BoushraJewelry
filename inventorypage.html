@@ -18,69 +18,69 @@
 	
 	<!-- my javascript code -->
 	<script>
-	"use strict";
-	// should be a global array to read it in the function and keep the data because we need to read it in the table
-	var data, datalist;
-	//jquery request
-	$(function()
-    {    
-        $.ajax(
-        {
-          cache:false,
-          type:"GET",
-		  dataType: 'json',
-          url:"DatabaseInterface.php?request=list",
-          success:retrieveData
-        });
-    });	
-	function retrieveData(table)
-		{
-			
-			data = table
-			// new array for the first columns  and the last two
-			datalist = new Array(5);
-			
-			//search for the combox with the ID "productID"
-			var sel = document.getElementById("productName");
-			for(var i = 0; i < 5; i++)
+		"use strict";
+		// should be a global array to read it in the function and keep the data because we need to read it in the table
+		var data, datalist;
+		//jquery request
+		$(function()
+		{    
+			$.ajax(
 			{
-				//first column
-				datalist[i] = table[i].slice(1,2);
-				//forth column
-				datalist[i].push(table[i].slice(4,5));
-				//fifth column
-				datalist[i].push(table[i].slice(5,6));
-				
-				// create an option element to the combox
-				// var opt should be insipe the loop to make sure the program create a new option each time
-				var opt = document.createElement("option");
-				// consider this element "table[j][0]" as an text to the option
-				// table[j][0] means that for each row, the program will take the first Item in the array "Name" 
-				opt.appendChild(document.createTextNode(table[i][1]));
-				// set the option value
-				opt.value=table[i][1];
-				// make a child for the combox
-				sel.appendChild(opt);
-			}
-			$(document).ready(function()
-			{
-				$('#products').DataTable(
-				{
-				//<!-- list is my new array with the first three columns -->
-					"data": datalist,
-					"autoWidth":true,
-					"destroy":true,
-					columns:
-					[
-					{ title: "Products" },
-					{ title: "Unit cost" },
-					{ title: "Quantity in inventory" },
-					]
-				});
+			cache:false,
+			type:"GET",
+			dataType: 'json',
+			url:"DatabaseInterface.php?request=list",
+			success:retrieveData
 			});
-	    }
+		});	
+		function retrieveData(table)
+			{
+				
+				data = table
+				// new array for the first columns  and the last two
+				datalist = new Array(5);
+				
+				//search for the combox with the ID "productID"
+				var sel = document.getElementById("productName");
+				for(var i = 0; i < 5; i++)
+				{
+					//first column
+					datalist[i] = table[i].slice(1,2);
+					//forth column
+					datalist[i].push(table[i].slice(4,5));
+					//fifth column
+					datalist[i].push(table[i].slice(5,6));
+					
+					// create an option element to the combox
+					// var opt should be insipe the loop to make sure the program create a new option each time
+					var opt = document.createElement("option");
+					// consider this element "table[j][0]" as an text to the option
+					// table[j][0] means that for each row, the program will take the first Item in the array "Name" 
+					opt.appendChild(document.createTextNode(table[i][1]));
+					// set the option value
+					opt.value=table[i][1];
+					// make a child for the combox
+					sel.appendChild(opt);
+				}
+				$(document).ready(function()
+				{
+					$('#products').DataTable(
+					{
+					//<!-- list is my new array with the first three columns -->
+						"data": datalist,
+						"autoWidth":true,
+						"destroy":true,
+						columns:
+						[
+						{ title: "Products" },
+						{ title: "Unit cost" },
+						{ title: "Quantity in inventory" },
+						]
+					});
+				});
+			}
 
-	function updateInventory()
+		function updateInventory()
 	{
 		var quantity = document.getElementById("rangeoutput").value;
 		var Item = document.getElementById("productName").value;
@@ -108,55 +108,44 @@
 		});
 	}	
 
-</script>
+	</script>
 <body>
-	
+
 	<!--Container-->
 	<div class="container">
 		<div class="text-center">
 			<h1 class=" text-dark bg-white">Inventory</h1>
+			<!-- Product List using Database Table  -->
+			
+			<table id="products" class="table">	
+			</table>
+			
+			<form method="GET" enctype="application/x-www-form-urlencoded" onsubmit="updateInventory()" action="inventorypage.html" >	
+				<h3>Order</h3>
+				<div class="form-group">
+					<!-- Product Id required -->
+					<label><b>Products:</b></label>
+					<select ID="productName" name="productlist" >
+						<!-- for now it is only content select item -->
+						<option value="" selected>none</option>
+					</select> 
+				</div>
+				<div class="form-group">
+					<!-- Quantity using range and text box  -->
+					<b>Quantity:</b> <input name="quantity" id="rangeoutput" type="number" value="1" step="1" min = "1"  />
+					<input id="rangeinput" type="range" min="1" step="5" max="1000" value = "1" oninput="rangeoutput.value=rangeinput.value" />	
+				</div>
+				<div class = "form-group">
+					<input class="btn btn-primary" type="submit" value="Order Inventory ">
+				</div>
+				
+				<br>
+				<br>
+				
+			</form>
+
 		</div>
 	</div>
-	
-
-	<!-- Product List using Database Table  -->
-	<table id="products" class="display w3-table-all">
-		
-	</table>
-
-
-	
-	<form class="content" method="GET" enctype="application/x-www-form-urlencoded" onsubmit="updateInventory()" action="inventorypage.html" >	
-		<fieldset id="Order">
-		
-			<legend><u>Inventory  Order</u></legend>
-			<!-- Product Id required -->
-			<label><b>Products:</b></label>
-			<select ID="productName" name="productlist" >
-				<!-- for now it is only content select item -->
-				<option value="" selected>none</option>
-			</select> 
-			<br>
-			<br>
-			
-			<!-- Quantity using range and text box  -->
-			<b>Quantity:</b> <input name="quantity" id="rangeoutput" type="number" value="1" step="1" min = "1"  />
-			<input id="rangeinput" type="range" min="1" step="5" max="1000" value = "1" oninput="rangeoutput.value=rangeinput.value" />
-			<br>
-			<br>
-		
-		<br>
-		<input class="button w3-button w3-hover-black" type="submit" value="Order Inventory ">
-		
-		<br>
-		<br>
-		
-	</form> 
-
-
-	
-	
-
 </body>
 </head>
 
