@@ -13,107 +13,111 @@
 <head>
 	<!-- title, page information, author name and descreption -->
 	
-	<title>Make an order, V5</title>
+	<title>Make an order</title>
 	<meta charset="UTF-8">
 	<meta name="author" content="Boushr Abdulmohsen"/>
 	<meta name="description" content="Boushra's Jewelry"/>
 	<meta name="keywords" content="HTML, Jewelry, Accessories">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<!-- my desigh -->
-	<link rel="stylesheet" type="text/css" href="design.css">
-	<!-- my desigh with mediaRule -->
-	<link rel="stylesheet" type="text/css" href="design2.css">
-	
 	<!-- W3.CSS link -->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-  <!-- bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  	<!-- bootstrap -->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   
-  <!-- javascript to reach to the combox using ID -->
-  <script>
-  "use strict";
-	// should be a global array to read it in the function and keep the data
-	var table, data;
-	//jquery request
-	$(function()
-    {    
-        var queryString = "request=get";
-        $.ajax(
-        {
-          cache:false,
-          type:"GET",
-		  dataType: 'json',
-          url:"DatabaseInterface.php?request=list",
-          success:retrieveData
-        });
-    });
-	
-	function retrieveData(table)
-	{
-		data = table;
-		//search for the combox with the ID "productID"
-		var sel = document.getElementById("productName");
-		
-		//retrieve the data from the local storge
-		//table = JSON.parse(localStorage.getItem("productdatatable"));
-		for(var j = 0; j < 5; j++)
-		{
-			// create an option element to the combox
-			// var opt should be insipe the loop to make sure the program create a new option each time
-			var opt = document.createElement("option");
-			// consider this element "table[j][0]" as an text to the option
-			// table[j][0] means that for each row, the program will take the first Item in the array "Name" 
-			opt.appendChild(document.createTextNode(table[j][1]));
-			// set the option value
-			opt.value=table[j][1];
-			// make a child for the combox
-			sel.appendChild(opt);
-		}
-	}
-	function onsubmitcall()
-	{
-		var quantity = document.getElementById("rangeoutput").value;
-		var Item = document.getElementById("productName").value;
-		var Q;
-		var Id;
-		for(var j = 0; j < 5; j++)
-		{
-			
-			data[j][4] = parseFloat(data[j][4]);
-			data[j][5] = parseInt(data[j][5]);
-			if(data[j][1]==Item)
+  	<!-- javascript to reach to the combox using ID -->
+	<script>
+	"use strict";
+		// should be a global array to read it in the function and keep the data
+		var table, data;
+		//jquery request
+		$(function()
+		{    
+			var queryString = "request=get";
+			$.ajax(
 			{
-				Id = data[j][0];
-				Q = parseInt(data[j][5])-parseInt(quantity);
-				
+			cache:false,
+			type:"GET",
+			dataType: 'json',
+			url:"DatabaseInterface.php?request=list",
+			success:retrieveData
+			});
+		});
+		
+		function retrieveData(table)
+		{
+			data = table;
+			//search for the combox with the ID "productID"
+			var sel = document.getElementById("productName");
+			
+			//retrieve the data from the local storge
+			//table = JSON.parse(localStorage.getItem("productdatatable"));
+			for(var j = 0; j < 5; j++)
+			{
+				// create an option element to the combox
+				// var opt should be insipe the loop to make sure the program create a new option each time
+				var opt = document.createElement("option");
+				// consider this element "table[j][0]" as an text to the option
+				// table[j][0] means that for each row, the program will take the first Item in the array "Name" 
+				opt.appendChild(document.createTextNode(table[j][1]));
+				// set the option value
+				opt.value=table[j][1];
+				// make a child for the combox
+				sel.appendChild(opt);
 			}
 		}
-        $.ajax(
-        {
-          cache:false,
-          type:"GET",
-		  url:"DatabaseInterface.php?request=update&ID="+Id+"&Quan="+Q,
-		  dataType:'json',
-          	
-		});
-	}
+		function onsubmitcall()
+		{
+			var quantity = document.getElementById("rangeoutput").value;
+			var Item = document.getElementById("productName").value;
+			var Q;
+			var Id;
+			for(var j = 0; j < 5; j++)
+			{
+				
+				data[j][4] = parseFloat(data[j][4]);
+				data[j][5] = parseInt(data[j][5]);
+				if(data[j][1]==Item)
+				{
+					Id = data[j][0];
+					Q = parseInt(data[j][5])-parseInt(quantity);
+					
+				}
+			}
+			$.ajax(
+			{
+			cache:false,
+			type:"GET",
+			url:"DatabaseInterface.php?request=update&ID="+Id+"&Quan="+Q,
+			dataType:'json',
+				
+			});
+		}
 
-  </script>
+	</script>
 	
   
 </head>
  
-<body id="body">
+<body>
 
 
 	<!-- navigation tab in the header of the body -->
-	<div class="navbar w3-bar">
-		<a href="mainpage.html" class="w3-bar-item w3-button"><h3>Home </h3></a>
-		<a href="productspage.html" class="w3-bar-item w3-button"><h3>Product </h3></a>
-		<a href="orderpage.html" class="w3-bar-item w3-button"><h3>Order </h3></a>
-	</div>
+	<nav class="navbar navbar-expand-sm justify-content-center bg-dark navbar-dark">
+		<a class="navbar-brand" href="logo.PNG">Logo</a>
+		<!-- Links -->
+		<ul class="navbar-nav">
+		  <li class="nav-item">
+			<a class="nav-link" href="mainpage.html">Home</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="productspage.html">Product</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="orderpage.html">Order</a>
+		  </li>
+		</ul>
+	  
+	</nav>
 	
 	<div class="pageheader">
 		<img src="logo.PNG" alt="logo" style="width:10%; height:10%">

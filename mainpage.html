@@ -19,7 +19,7 @@
 
 	<!-- title, page information, author name and descreption -->
 	
-	<title>Main Page, V5</title>
+	<title>Main Page</title>
 	<meta charset="UTF-8">
 	<meta name="author" content="Boushr Abdulmohsen"/>
 	<meta name="description" content="Boushra's Jewelry"/>
@@ -33,108 +33,88 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 	<!-- bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
  
 <body>
 	
 	<!-- navigation tab in the header of the body -->
-	<div class="navbar w3-bar">
-		<a href="mainpage.html" class="w3-bar-item w3-button"><h3>Home </h3></a>
-		<a href="productspage.html" class="w3-bar-item w3-button"><h3>Product </h3></a>
-		<a href="orderpage.html" class="w3-bar-item w3-button"><h3>Order </h3></a>
-	</div>
+	<nav class="navbar navbar-expand-sm justify-content-center bg-dark navbar-dark">
+		<a class="navbar-brand" href="logo.PNG">Logo</a>
+		<!-- Links -->
+		<ul class="navbar-nav">
+		  <li class="nav-item">
+			<a class="nav-link" href="mainpage.html">Home</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="productspage.html">Product</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="orderpage.html">Order</a>
+		  </li>
+		</ul>
+	  
+	</nav>
+
 	
-	<label id="displaydata">  </label>
-	
-	<div class="pageheader">
+	<div class="card-header">
 		<img src="logo.PNG" alt="logo" style="width:10%; height:10%">
 		<h1 class="w3-center w3-xxxlarge"><i>Boushra's Jewelry</i></h1>
 		
 	</div>
-	<br>
-	<br>
-	
-	<div class="w3-panel w3-border w3-round-large bodypage">
-	<fieldset class="w3-card">
-	<!-- second section : the contact information -->
-		<legend><u>Contact Information</u></legend>
-		<b>address:</b> Michigan USA
-		<br>
-		<b>Email:</b> boushra.jewelry@hotmail.com
-		<br>
-		<b>Phone:</b> 888-8888-8888
-	</fieldset>
- 
-	<br>	
-	<br>
-	</div>
-	
-	<br>
-	<br>
-	
-	<div  class="w3-panel w3-border w3-round-large bodypage">
-	<!-- our location using google map -->
-	<p class="w3-card"><b>Our Location</b></p>
-	
-	<iframe width="400" height="200" style="border:0"
-	src="https://www.google.com/maps/embed/v1/place?q=place_id:EjI1ODE3IEV2ZXJncmVlbiBSZCwgRGVhcmJvcm4gSGVpZ2h0cywgTUkgNDgxMjcsIFVTQSIxEi8KFAoSCb97zf1pNTuIEa6yGvbAKvb7ELktKhQKEgk_1cEBI8gkiBEpD7TFKTMrJA&key=AIzaSyDl2w9Tr6lEO5twmCOj-JJloVeGiVoFKdo" allowfullscreen>
-	</iframe>
-	
-	<br>
-	<br>
-	</div>
-	
-	<br>
-	<br>
-	
-	
 
-	<!-- third section : the descreption -->
-	<div class="w3-panel w3-border w3-round-large bodypage">
-		<h3 class="w3-card">descreption</h3>
-		<blockquote>
-		<i>we are an online store. our mission to pleasure you and find the perfect jewelry for you</i>
-		</blockquote>
-	</div>	
-	<br>
-		<br>
-	<!-- bussiness hours -->
-	<div class="w3-panel w3-border w3-round-large bodypage">
-	
-		<h2 class="w3-card">Bussiness hours</h2>
-		<blockquote>
-		<b>Monday - Friday:</b> <mark> 10:00 a.m to 10:00 p.m </mark>
-		</blockquote>
+	<div class="container">
+		<h2>Contact Information</h2>
+		<div class="card">
+		  <div class="card-body">
+			<p><b>address:</b> Michigan USA</p>
+			<p><b>Email:</b> boushra.jewelry@hotmail.com</p>
+			<p><b>Phone:</b> 888-8888-8888</p>
+		  </div>
+		</div>
+
+		<h2>Our Location</h2>
+		<div class="card">
+			<div class="card-body">
+				<iframe width="400" height="200" style="border:0"
+				src="https://www.google.com/maps/embed/v1/place?q=place_id:EjI1ODE3IEV2ZXJncmVlbiBSZCwgRGVhcmJvcm4gSGVpZ2h0cywgTUkgNDgxMjcsIFVTQSIxEi8KFAoSCb97zf1pNTuIEa6yGvbAKvb7ELktKhQKEgk_1cEBI8gkiBEpD7TFKTMrJA&key=AIzaSyDl2w9Tr6lEO5twmCOj-JJloVeGiVoFKdo" allowfullscreen>
+				</iframe>
+			</div>
+		</div>
+
+		<h2>descreption</h2>
+		<div class="card">
+			<div class="card-body">
+				<blockquote>
+					<i>we are an online store. our mission to pleasure you and find the perfect jewelry for you</i>
+				</blockquote>
+			</div>
+		</div>
+
+		<h2>Bussiness hours</h2>
+		<div class="card">
+			<div class="card-body">
+				<blockquote>
+					<b>Monday - Friday:</b> <mark> 10:00 a.m to 10:00 p.m </mark>
+				</blockquote>
+			</div>
+		</div>
+
+		<h2>Our History</h2>
+		<div class="card">
+			<div class="card-body">
+				<textarea readonly style="width:200px;height:50px">We are a new store and we just open!!</textarea>
+			</div>
+		</div>
+
 	</div>
-		<br>
-		<br>
 
-	
-	<!-- History of the store using inline style to design the size -->
-	<div class="w3-panel w3-border w3-round-large bodypage">
-		<label class="w3-card"><b><u>Our History</u></b></label>
-		<br>
-		<textarea readonly style="width:200px;height:50px">We are a new store and we just open!!</textarea>
-		<br>
-		<br>
-	</div>
-	
-
-	<br>
-		<br>
-
-	
 	<!-- Footer -->
-	<div class="footer">
+	<div class="card-footer">
 		<p>
-			<i>
-				5817 evergreen dr, Dearborn Heights, MI, 48127
-				555-555-5555
-				© copy right to Boushr's Jewelry
-			</i>
+			5817 evergreen dr, Dearborn Heights, MI, 48127
+			555-555-5555
+			© copy right to Boushr's Jewelry
 		</p>
 	</div>
 

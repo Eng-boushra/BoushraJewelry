@@ -23,9 +23,7 @@
 	<script  src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 	<!-- bootstrap -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 	
 	<!-- my javascript code -->
 	<script>
@@ -91,11 +89,22 @@
 
 	 
 	<!-- navigation tab in the header of the body -->
-	<div class="navbar w3-bar">
-		<a href="mainpage.html" class="w3-bar-item w3-button"><h3>Home </h3></a>
-		<a href="productspage.html" class="w3-bar-item w3-button"><h3>Product </h3></a>
-		<a href="orderpage.html" class="w3-bar-item w3-button"><h3>Order </h3></a>
-	</div>
+	<nav class="navbar navbar-expand-sm justify-content-center bg-dark navbar-dark">
+		<a class="navbar-brand" href="logo.PNG">Logo</a>
+		<!-- Links -->
+		<ul class="navbar-nav">
+		  <li class="nav-item">
+			<a class="nav-link" href="mainpage.html">Home</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="productspage.html">Product</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="orderpage.html">Order</a>
+		  </li>
+		</ul>
+	  
+	</nav>
 	
 	
 <!-- datatable to product list and using form to navigate to the order page 
