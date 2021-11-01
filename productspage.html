@@ -111,35 +111,19 @@
 	<!--Container-->
 	<div class="container">
 		<div class="text-center">
-			<h1 class=" text-dark bg-white">Products</h1>
+			<h1 class=" text-dark bg-white">Products</h1>	
+			<!-- datatable to product list and using form to navigate to the order page 
+	 		_blank to open in new page -->
+			<form action="orderpage.html" target="_blank" >
+				<!-- Product List using Database Table  -->
+				<table id="products" class="display w3-table-all">
+			  	</table>
+			  	<!-- Submit Button navigate to the order page-->
+			  	<button type="submit" class="btn btn-primary">Make your order Now</button>
+		  </form>
 		</div>
 	</div>
 	
-<!-- datatable to product list and using form to navigate to the order page 
-	 _blank to open in new page -->
-
-
-	
-	<br>
-	<br>
-	
-<form action="orderpage.html" target="_blank" >
-  <!-- Product List using Database Table  -->
-  
-  <table id="products" class="display w3-table-all">
-	
-	</table>
-	
-	<br>
-	<br>
-	<!-- Submit Button navigate to the order page-->
-	<input class="button" type="submit" value="Order Now"/>
-	
-	<br>
-	<br>
-
-
-	<!-- Footer -->
 	<!-- Footer -->
 	<footer class="mt-5 pt-5 pb-5 footer text-center" >
 		<small>
