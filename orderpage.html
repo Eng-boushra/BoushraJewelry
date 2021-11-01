@@ -125,72 +125,69 @@
 	<div class="container">
 		<div class="text-center">
 			<h1 class=" text-dark bg-white">Make an order</h1>
+			<form method="post" enctype="application/x-www-form-urlencoded" onsubmit="onsubmitcall()" action="OrderConfirmation.php" >
+	
+				<!-- The information of the buyer and the products his choose  -->
+				<!-- First and Last name only accept letters -->
+				<div class="row">
+					<label for="firstname">First Name</label>
+					<input type="text" class="form-control" id="firstname" placeholder="Enter first name" name="firstname" size="6"  autocomplete="on" pattern="[a-z,A-Z]+" title="Enter letters only" required>
+				</div>
+				<div class="row">
+					<label for="lastname">Last Name</label>
+					<input type="text" class="form-control" id="lastname" placeholder="Enter last name" name="lastname" size="6"  autocomplete="on" pattern="[a-z,A-Z]+" title="Enter letters only" required>
+				</div>
+				<!-- Phone nmuber required -->
+				<div class="row">
+					<label for="phonenumber">Phone Number</label>
+					<input type="phonenumber" class="form-control" id="phonenumber" placeholder="Enter phone number" name="phonenumber" required>
+				</div>
+				<!-- Email required -->
+				<div class="row">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+				</div>
+				<!-- Address required -->
+				<div class="row">
+					<label for="address">Address</label>
+					<input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required>
+				</div>
+				<!-- Product Name required -->
+				<div class="row">
+					<label for="productlist">Products</label>
+					<select type="text" class="form-control" id="productName" placeholder="Enter address" name="productlist" required>
+						<!-- for now it is only content select item -->
+						<option value="" selected>none</option>
+					</select>
+				</div>
+				<!-- Quantity using range and text box  -->
+				<div class="row">
+					<label for="address">Quantity</label>
+					<input class="form-control" name="quantity" id="rangeoutput" type="number" value="1" step="1" min = "1"  placeholder="Enter quantity"/>
+					<input class="form-control" id="rangeinput" type="range" min="1" step="5" max="100" value = "1" oninput="rangeoutput.value=rangeinput.value" placeholder="Enter quantity"/>
+				</div>
+				<!-- Radio buttons to shipping methods -->
+				<div class="row">
+					<label for="address">Shipping Methods</label>
+					<div class="form-check-inline">
+						<label class="form-check-label">
+						  <input type="radio" class="form-check-input" name="shipping" value="UPS"> UPS
+						</label>
+					  </div>
+					  <div class="form-check-inline">
+						<label class="form-check-label">
+						  <input type="radio" class="form-check-input" name="shipping" value="USPS">USPS
+						</label>
+					  </div>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="reset" class="btn btn-primary">Reset</button>
+			</form> 
 		</div>
 	</div>
 
 	
-	<br>
-	<br>
-	
-<form class="content" method="post" enctype="application/x-www-form-urlencoded" onsubmit="onsubmitcall()" action="OrderConfirmation.php" >
-	
-	<!-- The information of the buyer and the products his choose  -->
-	<fieldset id="customerinfo">
-		<legend><u>Order</u></legend>
-		
-		<!-- First and Last name only accept letters -->
-		<b>First Name:</b> <input class="w3-input" name="firstname" type="text" size="6"  autocomplete="on" pattern="[a-z,A-Z]+" title="Enter letters only"/>
-		<b>Last Name:</b> <input class="w3-input" name="lastname" type="text" size="6"  autocomplete="on" pattern="[a-z,A-Z]+" title="Enter letters only"/>
-		<br>
-		<br>
-		
-		<!-- Phone nmuber required -->
-		<b>Phone Number:</b> <input class="w3-input" name="phonenumber" type="number"  />
-		<br>
-		<br>
-		
-		<!-- Email required -->
-		<b>E-mail:</b> <input class="w3-input" name="email" type="email"  />
-		<br>
-		<br>
-		
-		<!-- Address required -->
-		<b>Addres:</b> <input class="w3-input" name="address" type="text"  />
-		<br>
-		<br>
-		
-		<!-- Product Name required -->
-		<label><b>Products:</b></label>
-		<select ID="productName" name="productlist" >
-			<!-- for now it is only content select item -->
-			<option value="" selected>none</option>
-		</select> 
-		<br>
-		<br>
 
-		<!-- Quantity using range and text box  -->
-		<b>Quantity:</b> <input name="quantity" id="rangeoutput" type="number" value="1" step="1" min = "1"  />
-		<input id="rangeinput" type="range" min="1" step="5" max="100" value = "1" oninput="rangeoutput.value=rangeinput.value" />
-		<br>
-		<br>
-		
-		<!-- Radio buttons to shipping methods -->
-		<label><b>Shipping Methods:</b></label>
-		<br>
-		<input type="radio" class="w3-radio" name="shipping" value="UPS"> UPS<br>
-		<input type="radio" class="w3-radio" name="shipping" value="USPS"> USPS<br>
-		<br>
-
-	</fieldset>
-	
-	<br>
-	<input class="button w3-button w3-hover-black" type="submit" value="submit">
-    <input class="button w3-button w3-hover-black" type="reset" value="Reset">
-	
-	<br>
-	<br>
-	
-</form> 
 
 <br>
 <br>
