@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang=en>
+<!--==================================================================
+//
+// Web site: Boushra's Jewelry
+// Web page: products page
+// Description:
+//   It is a website to sell jewelry and accessories.
+//   In this page, take the customer information and the order information and send them to the server.
+// 
+//=================================================================-->
+
+<head>
+	<!-- title, page information, author name and descreption -->
+	
+	<title>Make an order, V5</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="Boushr Abdulmohsen"/>
+	<meta name="description" content="Boushra's Jewelry"/>
+	<meta name="keywords" content="HTML, Jewelry, Accessories">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- my desigh -->
+	<link rel="stylesheet" type="text/css" href="design.css">
+	<!-- my desigh with mediaRule -->
+	<link rel="stylesheet" type="text/css" href="design2.css">
+	
+	<!-- W3.CSS link -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  
+  <!-- javascript to reach to the combox using ID -->
+  <script>
+  "use strict";
+	// should be a global array to read it in the function and keep the data
+	var table, data;
+	//jquery request
+	$(function()
+    {    
+        var queryString = "request=get";
+        $.ajax(
+        {
+          cache:false,
+          type:"GET",
+		  dataType: 'json',
+          url:"DatabaseInterface.php?request=list",
+          success:retrieveData
+        });
+    });
+	
+	function retrieveData(table)
+	{
+		data = table;
+		//search for the combox with the ID "productID"
+		var sel = document.getElementById("productName");
+		
+		//retrieve the data from the local storge
+		//table = JSON.parse(localStorage.getItem("productdatatable"));
+		for(var j = 0; j < 5; j++)
+		{
+			// create an option element to the combox
+			// var opt should be insipe the loop to make sure the program create a new option each time
+			var opt = document.createElement("option");
+			// consider this element "table[j][0]" as an text to the option
+			// table[j][0] means that for each row, the program will take the first Item in the array "Name" 
+			opt.appendChild(document.createTextNode(table[j][1]));
+			// set the option value
+			opt.value=table[j][1];
+			// make a child for the combox
+			sel.appendChild(opt);
+		}
+	}
+	function onsubmitcall()
+	{
+		var quantity = document.getElementById("rangeoutput").value;
+		var Item = document.getElementById("productName").value;
+		var Q;
+		var Id;
+		for(var j = 0; j < 5; j++)
+		{
+			
+			data[j][4] = parseFloat(data[j][4]);
+			data[j][5] = parseInt(data[j][5]);
+			if(data[j][1]==Item)
+			{
+				Id = data[j][0];
+				Q = parseInt(data[j][5])-parseInt(quantity);
+				
+			}
+		}
+        $.ajax(
+        {
+          cache:false,
+          type:"GET",
+		  url:"DatabaseInterface.php?request=update&ID="+Id+"&Quan="+Q,
+		  dataType:'json',
+          	
+		});
+	}
+
+  </script>
+	
+  
+</head>
+ 
+<body id="body">
+
+
+	<!-- navigation tab in the header of the body -->
+	<div class="navbar w3-bar">
+		<a href="mainpage.html" class="w3-bar-item w3-button"><h3>Home </h3></a>
+		<a href="productspage.html" class="w3-bar-item w3-button"><h3>Product </h3></a>
+		<a href="orderpage.html" class="w3-bar-item w3-button"><h3>Order </h3></a>
+	</div>
+	
+	<div class="pageheader">
+		<img src="logo.PNG" alt="logo" style="width:10%; height:10%">
+		<h1  class="w3-center w3-xxxlarge"><i>Make an order</i></h1>
+	
+	</div>
+	
+	<br>
+	<br>
+	
+<form class="content" method="post" enctype="application/x-www-form-urlencoded" onsubmit="onsubmitcall()" action="OrderConfirmation.php" >
+	
+	<!-- The information of the buyer and the products his choose  -->
+	<fieldset id="customerinfo">
+		<legend><u>Order</u></legend>
+		
+		<!-- First and Last name only accept letters -->
+		<b>First Name:</b> <input class="w3-input" name="firstname" type="text" size="6"  autocomplete="on" pattern="[a-z,A-Z]+" title="Enter letters only"/>
+		<b>Last Name:</b> <input class="w3-input" name="lastname" type="text" size="6"  autocomplete="on" pattern="[a-z,A-Z]+" title="Enter letters only"/>
+		<br>
+		<br>
+		
+		<!-- Phone nmuber required -->
+		<b>Phone Number:</b> <input class="w3-input" name="phonenumber" type="number"  />
+		<br>
+		<br>
+		
+		<!-- Email required -->
+		<b>E-mail:</b> <input class="w3-input" name="email" type="email"  />
+		<br>
+		<br>
+		
+		<!-- Address required -->
+		<b>Addres:</b> <input class="w3-input" name="address" type="text"  />
+		<br>
+		<br>
+		
+		<!-- Product Name required -->
+		<label><b>Products:</b></label>
+		<select ID="productName" name="productlist" >
+			<!-- for now it is only content select item -->
+			<option value="" selected>none</option>
+		</select> 
+		<br>
+		<br>
+
+		<!-- Quantity using range and text box  -->
+		<b>Quantity:</b> <input name="quantity" id="rangeoutput" type="number" value="1" step="1" min = "1"  />
+		<input id="rangeinput" type="range" min="1" step="5" max="100" value = "1" oninput="rangeoutput.value=rangeinput.value" />
+		<br>
+		<br>
+		
+		<!-- Radio buttons to shipping methods -->
+		<label><b>Shipping Methods:</b></label>
+		<br>
+		<input type="radio" class="w3-radio" name="shipping" value="UPS"> UPS<br>
+		<input type="radio" class="w3-radio" name="shipping" value="USPS"> USPS<br>
+		<br>
+
+	</fieldset>
+	
+	<br>
+	<input class="button w3-button w3-hover-black" type="submit" value="submit">
+    <input class="button w3-button w3-hover-black" type="reset" value="Reset">
+	
+	<br>
+	<br>
+	
+</form> 
+
+<br>
+<br>
+	<!-- Footer -->
+	<div class="footer">
+		<p>
+			<i>
+				5817 evergreen dr, Dearborn Heights, MI, 48127
+				555-555-5555
+				© copy right to Boushr's Jewelry
+			</i>
+		</p>
+	</div>
+
+</body>
+ 
+</html>

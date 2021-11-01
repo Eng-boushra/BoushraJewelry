@@ -1,0 +1,135 @@
+/* this only for the body of the page */
+body{
+	/* add the logo as background*/
+
+	/* */
+	background-color:AliceBlue;
+	/* the logo position is on the right top */
+	background-position: right top;
+	background-repeat: no-repeat;
+	/* fix it over the screen with no repeat */
+	background-attachment: fixed;
+	
+}
+
+/* this for the whole page */
+*{
+	/* type of the font */
+	font-family : monospace;
+	
+}
+
+/* for navigation bar */
+.navbar a{
+	display:inline-block;
+	color : black;
+	margin:10px;
+	list-style-type:none;
+}
+
+.pageheader{
+
+	/* space between words */
+	word-spacing: 1px;
+	font-size : 50px;
+	
+	text-align: center;
+	color : CadetBlue;
+		
+}
+
+.pageheader img {
+  float: right;
+  width: 100px;
+  height: 100px;
+  background: #555;
+}
+
+.pageheader h1 {
+  position: relative;
+  top: 18px;
+  left: 10px;
+}
+
+.pageheader:hover{
+	/* when the pointer pass over the h1 change the color to blue */
+	color : DarkMagenta;
+}
+
+
+p{
+	/* transfare all letters to lower case and 3px space*/
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* for the body elements in main page */
+.bodypage{
+	margin:auto;
+	display:block;
+	
+	outline-style: double;
+	border-style: dotted;
+
+	padding: 10px;
+	background-color : SeaShell;
+	border: 2px solid;
+	border-width: medium;
+	width:50%;
+	border-radius:20px;
+}
+
+
+/* for footer */
+.footer{
+	margin:auto;
+	display:block;
+	clear:both;
+	/* lightgrey color rgb */
+	background-color : rgb(211,211,211);
+	font-size: small;
+	/* the space around the element */
+	padding: 5px;
+	height : 20%;
+	width:20%;
+	text-align: center;
+	border: 1px solid black;
+
+	outline-color: yellow;
+}
+
+
+
+/* customer information field set name as order */
+#customerinfo{
+	
+	background-color : lightblue;
+}
+
+/* form from oredr page */
+.content{
+	clear:both;
+	display:block;
+	width : 400px;
+	padding:25px;
+	background-color : #DFDFFF;
+	margin: auto;
+}
+
+/* buttons style */
+.button{
+	margin:auto;
+	display:block;
+	
+	/* button color */
+	background-color: #ffdfdf;
+	/* text color */
+	color: black;
+	padding: 15px 32px;
+	text-align: center;
+	/* line in the top */
+	text-decoration: overline;
+	/* font style*/
+	font-family : cursive;
+	font-size: 16px;
+}

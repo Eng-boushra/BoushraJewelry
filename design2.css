@@ -1,0 +1,49 @@
+/* new design file to media rule */
+/* all means all the display devices */
+
+@media all and (max-width: 1000px)
+{
+	/* change back ground color if we change the display width under 1000 */
+  body
+  {
+    background-color: CadetBlue;
+  }
+  
+}
+
+@media all and (max-width: 1400px)
+{
+  body
+  {
+	  /* if the display width under 1400 reduce the width & height 90% */
+    float: none;
+	height: 90%;
+    width: 90%;
+  }
+  .footer
+  {
+	  /* if the display width under 1400 reduce the footer width & height 10% */
+    float: none;
+	height: 10%;
+    width: 10%;
+	font-size: 30%;
+  }
+}
+  
+@media all and (max-width: 500px)
+{
+  .column
+  {
+	  /* for the table and its columns reduce the width */
+    width: 20%;
+  }
+}
+ 
+ 
+@media screen and (max-width: 600px) {
+  .footer {
+	  /* hide the footer */
+	  
+    display: none;
+  }
+}

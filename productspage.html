@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang=en>
+<!--==================================================================
+//
+// Web site: Boushra's Jewelry
+// Web page: products page
+// Description:
+//   It is a website to sell jewelry and accessories.
+//   
+// 
+//=================================================================-->
+
+<head>
+	<!-- title, page information, author name and descreption -->
+  
+	<title>Products, V5</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="Boushr Abdulmohsen"/>
+	<meta name="description" content="Boushra's Jewelry"/>
+	<meta name="keywords" content="HTML, Jewelry, Accessories"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css"  href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+	<script  src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	
+	
+	<!-- my javascript code -->
+	<script>
+	"use strict";
+	// should be a global array to read it in the function and keep the data because we need to read it in the table
+	var table, datalist;	
+		
+	//jquery request
+	$(function()
+    {    
+        $.ajax(
+        {
+          cache:false,
+          type:"GET",
+		  dataType: 'json',
+          url:"DatabaseInterface.php?request=list",
+          success:retrieveData
+        });
+    });
+		function retrieveData(table)
+		{
+			datalist = new Array(5);
+			for(var i = 0; i < 5; i++)
+			{
+			// copy the first three column
+			datalist[i] = table[i].slice(1,4);
+			$(document).ready(function()
+			{
+				$('#products').DataTable(
+				{
+				<!-- datatable is my new array with the first three columns -->
+					"data": datalist,
+					"autoWidth": true,
+					"destroy":true,
+					columns:
+					[
+					{ title: "Name" },
+					{ title: "Description" },
+					{ title: "Image" },
+					]
+				});
+			});	
+			}
+		}
+
+		
+	</script>
+	
+	<!-- my desigh -->
+	<link rel="stylesheet" type="text/css" href="design.css">
+	<!-- my desigh with mediaRule -->
+	<link rel="stylesheet" type="text/css" href="design2.css">
+	
+	<!-- W3.CSS link -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	
+	
+	
+  
+</head>
+ 
+<body>
+
+	 
+	<!-- navigation tab in the header of the body -->
+	<div class="navbar w3-bar">
+		<a href="mainpage.html" class="w3-bar-item w3-button"><h3>Home </h3></a>
+		<a href="productspage.html" class="w3-bar-item w3-button"><h3>Product </h3></a>
+		<a href="orderpage.html" class="w3-bar-item w3-button"><h3>Order </h3></a>
+	</div>
+	
+	
+<!-- datatable to product list and using form to navigate to the order page 
+	 _blank to open in new page -->
+	<div class="pageheader">
+		<img src="logo.PNG" alt="logo" style="width:10%; height:10%">
+		<h1 class="w3-center w3-xxxlarge"><i>Products</i></h1>
+	
+	</div>
+	
+	<br>
+	<br>
+	
+<form action="orderpage.html" target="_blank" >
+  <!-- Product List using Database Table  -->
+  
+  <table id="products" class="display w3-table-all">
+	
+	</table>
+	
+	<br>
+	<br>
+	<!-- Submit Button navigate to the order page-->
+	<input class="button" type="submit" value="Order Now"/>
+	
+	<br>
+	<br>
+
+
+	<!-- Footer -->
+	<div class="footer">
+		<p>
+			<i>
+				5817 evergreen dr, Dearborn Heights, MI, 48127
+				555-555-5555
+				© copy right to Boushr's Jewelry
+			</i>
+		</p>
+	</div>
+	
+	
+</form>	
+
+
+</body>
+ 
+</html>
